@@ -2,7 +2,7 @@
 export const getListCloseTrade= async (uid)=>{
     var result = []
     var traderNickName=""  
-    for(let i =1;i<5;i++)
+    for(let i =1;i<6;i++)
     {
        
             const url = `https://futures.mexc.com/copyFutures/api/v1/trader/ordersHis/v2?limit=10&page=${i}&uid=`
