@@ -27,7 +27,6 @@ Mở Tín hiệu ✅: ${listTradeNow[i].positionType==2?"Short":"Long"}
 Cặp giao dịch: ${listTradeNow[i].symbol}
 Giá trung bình: ${listTradeNow[i].openAvgPrice} USDT
 Thời gian mở : ${formatTime(listTradeNow[i].openTime)}`
-          console.log(message)
           bot.sendMessage(roomId, message)
           },1000*5*(++time))
         }
@@ -61,7 +60,6 @@ export  async function closeTranding(uid,roomId) {
 Cặp giao dịch: ${listCloseTrade[i].symbol}
 Giá trung bình: ${listCloseTrade[i].closeAvgPrice} USDT
 Thời gian đóng: ${formatTime(listCloseTrade[i].closeTime)}`
-                console.log(message)
                 bot.sendMessage(roomId, message)
               },i*5000)
               }
