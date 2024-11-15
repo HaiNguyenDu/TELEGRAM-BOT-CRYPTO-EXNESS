@@ -83,10 +83,12 @@ for(let trader in listTrader)
 {
   setTimeout(()=>{
     setTimeout(()=>{
-      setInterval(()=>closeTranding(listTrader[trader],roomId),150000)
+      setInterval(()=>closeTranding(listTrader[trader],roomId),100000)
     },5000)
-    setInterval(()=>openTrading(listTrader[trader],roomId),150000)
-  },15000*(i++))
+    setInterval(()=>openTrading(listTrader[trader],roomId),100000) 
+   }
+  ,1000*(i++))
+
 }
 
 }
