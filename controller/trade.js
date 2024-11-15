@@ -26,7 +26,7 @@ export async function openTrading(uid,roomId) {
 Mở Tín hiệu ✅: ${listTradeNow[i].positionType==2?"Short":"Long"}
 Cặp giao dịch: ${listTradeNow[i].symbol}
 Giá trung bình: ${listTradeNow[i].openAvgPrice} USDT
-Thời gian mở : ${formatTime(listTradeNow[i].openTime)}`
+Thời gian mở : ${formatTime()}`
           bot.sendMessage(roomId, message)
           },1000*5*(++time))
         }
@@ -59,7 +59,7 @@ export  async function closeTranding(uid,roomId) {
 Đã đóng tín hiệu ❌:${listCloseTrade[i].positionType==2?" Short":" Long"}
 Cặp giao dịch: ${listCloseTrade[i].symbol}
 Giá trung bình: ${listCloseTrade[i].closeAvgPrice} USDT
-Thời gian đóng: ${formatTime(listCloseTrade[i].closeTime)}`
+Thời gian đóng: ${formatTime()}`
                 bot.sendMessage(roomId, message)
               },i*5000)
               }
