@@ -1,20 +1,26 @@
 
-import TelegramBot from 'node-telegram-bot-api';
-import connectDb from './config/database.js';
-import { botCommands } from './controller/bot-commands.js';
+// import TelegramBot from 'node-telegram-bot-api';
+// import connectDb from './config/database.js';
+// import { botCommands } from './controller/bot-commands.js';
 
 
 
 
-const token = '8156108573:AAF7J4YlUS8pzfOiUS1NZU5od5OXXOOxxWI'.trim();
-export const bot = new TelegramBot(token, { polling: true });
+// const token = '8156108573:AAF7J4YlUS8pzfOiUS1NZU5od5OXXOOxxWI'.trim();
+// export const bot = new TelegramBot(token, { polling: true });
 
 
-//ketnoidatabase
-connectDb()
-// //goiham lenh cua bot
-botCommands(bot)
+// //ketnoidatabase
+// connectDb()
+// // //goiham lenh cua bot
 
+import moment from 'moment-timezone';
+
+export const formatTime = () => {
+  // Lấy thời gian hiện tại theo múi giờ Việt Nam
+  return moment().tz('Asia/Ho_Chi_Minh').format('YYYY-MM-DD HH:mm');
+};
+console.log(formatTime())
 
 
 
