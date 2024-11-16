@@ -23,9 +23,9 @@ export async function openTrading(uid,roomId) {
         if (check=="S") {
           setTimeout(()=>{
           const message = `Bot: ${listTradeNow[i].traderNickName[0]}
-Mở Tín hiệu ✅: ${listTradeNow[i].positionType==2?"Short":"Long"}
+Tín hiệu ✅: ${listTradeNow[i].positionType==2?"Short":"Long"}
 Cặp giao dịch: ${listTradeNow[i].symbol}
-Giá trung bình: ${Math.round(listTradeNow[i].openAvgPrice * 1000) / 1000} USDT
+Giá trung bình: ${Math.round(listTradeNow[i].openAvgPrice * 100000000) / 100000000} USDT
 Thời gian: ${formatTime()}`
           bot.sendMessage(roomId, message)
           },1000*5*(++time))
@@ -58,8 +58,8 @@ export  async function closeTranding(uid,roomId) {
                 const message = `Bot: ${listCloseTrade[i].traderNickName[0]}
 Đã đóng tín hiệu ❌:${listCloseTrade[i].positionType==2?" Short":" Long"}
 Cặp giao dịch: ${listCloseTrade[i].symbol}
-Giá mở : ${Math.round(listCloseTrade[i].openAvgPrice*1000)/1000} USDT
-Giá đóng : ${Math.round(listCloseTrade[i].closeAvgPrice*1000)/1000} USDT
+Giá mở : ${Math.round(listCloseTrade[i].openAvgPrice*100000000)/100000000} USDT
+Giá đóng : ${Math.round(listCloseTrade[i].closeAvgPrice*100000000)/100000000} USDT
 Thời gian đóng: ${formatTime()}`
                 bot.sendMessage(roomId, message)
               },i*5000)
