@@ -3,7 +3,6 @@ import { closeTranding, openTrading } from "./trade.js";
 var roomId =-4545085133;
 const listNumBer = []
 const listTrader ={
-  "MRDEEDS":77849100,
   "JCK":32443687,
   "Dionzsos":23106845,
   "Crypto Surfer":22394266,
@@ -11,34 +10,58 @@ const listTrader ={
 }
 
 
+
 export const botCommands =(bot)=>{
-  bot.onText(/\/help/, (msg, match) => {
+  bot.onText(/\/xxxhelp/, (msg, match) => {
     const chatId = msg.chat.id;
     const message =`/changeTrader idTraderOld idTraderNew nameTraderNew
 This order has the effect of changing traders
 
-/listTrader 
+/xxxlistTrader 
 This order has the effect of echo List Trader
 
-/changeGroupId id
+/xxxchangeGroupId id
 This order has the effect of change Group Id
 
-/getGroupId
+/xxxgetGroupId
 This order has the effect of get Group Id
 
-/testGroupId message
+/xxxtestGroupId message
 This order has the effect of test bot in Group
+
+/xxxaddTrader traderNickName uid
+This order has the effect of add Trader copy
+
+/xxxremoveTrader traderNickName
+This order has the effect of remove Trader copy
 `
 
     
     bot.sendMessage(chatId, message);
   });   
-bot.onText(/\/testGroupId (.+)/, (msg, match) => {
+  bot.onText(/\/xxxaddTrader (.+) (\S+)/, (msg, match) => {
+
+    const traderName = match[1]
+    const uid = match[2]
+    listTrader.traderName = uid;
+    bot.sendMessage(roomId, "Add Trader "+ traderName+":"+ uid +" success");
+  });
+  bot.onText(/\/xxxremoveTrader (.+)/, (msg, match) => {
+  
+    const traderName = match[1]
+    if(!listTrader.traderName)
+      return bot.sendMessage(roomId, "Trader is not exist");
+    else{
+    delete listTrader.traderName
+     bot.sendMessage(roomId, "remove Trader "+ traderName+" success");
+    }
+  });
+bot.onText(/\/xxxtestGroupId (.+)/, (msg, match) => {
 
   const resp = match[1];
   bot.sendMessage(roomId, resp);
 });
-bot.onText(/\/changeTrader (\S+) (\S+) (.+)/, (msg, match) => {
+bot.onText(/\/xxxchangeTrader (\S+) (\S+) (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   if(!match[1]||!match[2]||!match[3]) {
      bot.sendMessage(chatId, "Vui Long Nhap Dung Du Lieu theo form Idtradermuonthaydoi idthaydoi tentrader");
@@ -57,7 +80,7 @@ bot.onText(/\/changeTrader (\S+) (\S+) (.+)/, (msg, match) => {
   bot.sendMessage(chatId, "Id Ko Ton Tai");
   return 
 });
-bot.onText(/\/listTrader/, (msg, match) => {
+bot.onText(/\/xxxlistTrader/, (msg, match) => {
   const chatId = msg.chat.id;
   var result = ''
   for(let trader in listTrader)
@@ -67,12 +90,12 @@ bot.onText(/\/listTrader/, (msg, match) => {
   
   bot.sendMessage(chatId, result);
 });
-bot.onText(/\/changeGroupId (.+)/, (msg, match) => {
+bot.onText(/\/xxxchangeGroupId (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   roomId = match[1];
   bot.sendMessage(chatId, "Thay Doi Id Room Thanh Cong");
 });
-bot.onText(/\/getGroupId/, (msg, match) => {
+bot.onText(/\/xxxgetGroupId/, (msg, match) => {
   const chatId = msg.chat.id;
   bot.sendMessage(chatId,"Group Id :" +" "+roomId);
 });
