@@ -14,7 +14,7 @@ const listTrader ={
 export const botCommands =(bot)=>{
   bot.onText(/\/xxxhelp/, (msg, match) => {
     const chatId = msg.chat.id;
-    const message =`/changeTrader idTraderOld idTraderNew nameTraderNew
+    const message =`/xxxchangeTrader idTraderOld idTraderNew nameTraderNew
 This order has the effect of changing traders
 
 /xxxlistTrader 
