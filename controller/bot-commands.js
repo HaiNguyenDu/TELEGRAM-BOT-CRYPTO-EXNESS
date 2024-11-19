@@ -43,16 +43,20 @@ This order has the effect of remove Trader copy
 
     const traderName = match[1]
     const uid = match[2]
-    listTrader.traderName = uid;
+    listTrader[traderName] = uid;
+    setTimeout(()=>{
+      setInterval(()=>closeTranding(listTrader[traderName],roomId),100000)
+    },5000)
+    setInterval(()=>openTrading(listTrader[traderName],roomId),100000) 
     bot.sendMessage(roomId, "Add Trader "+ traderName+":"+ uid +" success");
   });
   bot.onText(/\/xxxremoveTrader (.+)/, (msg, match) => {
   
     const traderName = match[1]
-    if(!listTrader.traderName)
+    if(!listTrader[traderName])
       return bot.sendMessage(roomId, "Trader is not exist");
     else{
-    delete listTrader.traderName
+    delete listTrader[traderName]
      bot.sendMessage(roomId, "remove Trader "+ traderName+" success");
     }
   });
