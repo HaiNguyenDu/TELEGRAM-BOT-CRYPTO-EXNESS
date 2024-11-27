@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config()
 
-const stringUrl = "mongodb+srv://PhuocNguyen:PN123456@demo.nbwwo.mongodb.net/BotTelegram?retryWrites=true&w=majority&appName=Demo"
+const stringUrl =process.env.MONGODB_URL || ""
 
 
 const connectDb = async ()=> {
