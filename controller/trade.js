@@ -49,11 +49,10 @@ export  async function closeTranding(trader,roomId) {
               bot.sendMessage(roomId, "ApilistCLoseTrade fail to fetch")
               return
             }
-        
             for(let i =0;i<listCloseTrade.length;i++)
             { 
               
-              if(listIdTradeInDB.includes(listCloseTrade[i].order_id))
+              if(listIdTradeInDB.includes(listCloseTrade[i].order_id.toString()))
               {
                 
                 deleteTrade(listCloseTrade[i].order_id)

@@ -2,7 +2,8 @@
 import TelegramBot from 'node-telegram-bot-api';
 import connectDb from './config/database.js';
 import { botCommands } from './controller/bot-commands.js';
-import { deleteAll } from './service/trade-service.js';
+import { deleteAll, getAllTradeId } from './service/trade-service.js';
+import { getListCloseTrade } from './helper/get-time-close-and-cost-close.js';
 
 
 
@@ -13,9 +14,9 @@ export const bot = new TelegramBot(token, { polling: true });
 
 //ketnoidatabase
 connectDb()
-//goiham lenh cua bot
+
 botCommands(bot)
-// deleteAll();
+
 
 
 

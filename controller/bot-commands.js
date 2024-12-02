@@ -127,8 +127,6 @@ listTrader.forEach((trader)=>{
    }
   ,1000*(i++))
 })
-
-
 }
 
 
