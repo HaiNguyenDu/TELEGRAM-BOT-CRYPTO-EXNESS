@@ -1,25 +1,15 @@
 
-export const getListCloseTrade= async (uid)=>{
-    var result = []
-    var traderNickName=""  
-    for(let i =1;i<6;i++)
-    {
-       
-            const url = `https://futures.mexc.com/copyFutures/api/v1/trader/ordersHis/v2?limit=10&page=${i}&uid=`
-            const respone = await fetch(url+uid)   
+export const getListCloseTrade= async (uid,bot)=>{
+            const url = `https://my.ex-markets.com/st/v1/managers/accounts/${uid}/trade-history/`
+            const respone = await fetch(url)   
             .then(response => response.json())
             .then((response)=>{
-                if(!response.data.content) return
-                else return response.data.content
+                if(!response) return null
+                else return response.result
             })
-                if(!traderNickName) traderNickName = respone[0].traderNickName
-                if (!respone)break; 
-                if (respone.length == 0) break;
-                result = result.concat(respone)
-    }
-   
-    return {
-        listCloseTrade:result,
-        traderNickName:traderNickName
-    }
+            .catch((error)=>{
+                bot.sendMessage(-4545085133,"Api den web dang bi loi");
+            })
+                if (respone.length == 0) return null;   
+    return respone;
 }

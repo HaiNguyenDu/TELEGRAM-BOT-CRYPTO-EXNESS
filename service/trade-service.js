@@ -6,7 +6,7 @@ export const checkTrade = async (trade)=>{
     if(!trade)
         return "N"
     try {
-        const check = await Trade.findOne({orderId:trade.orderId,nickNameTrader:trade.nickNameTrader})
+        const check = await Trade.findOne({order_id:trade.order_id,account:trade.account})
         if(check)
             return "T"
         const respone = await Trade.create(trade);
@@ -22,22 +22,22 @@ export const deleteTrade = async (id)=>{
     if(!id)
         return "N"
     try {
-        const deleteTrade = await Trade.deleteOne({orderId:id})
+        const deleteTrade = await Trade.deleteOne({order_id:id})
         return "S"
     } catch (error) {
         bot.sendMessage(-4545085133,error)
         return "E"
     }
 }
-export const getAllTradeId = async (traderNickName)=>{
-    if(!traderNickName)
+export const getAllTradeId = async (account)=>{
+    if(!account)
         return "N"
     try {
-        const listTrade = await Trade.find({traderNickName:traderNickName})
+        const listTrade = await Trade.find({account:account})
         if(!listTrade)
             return "N"
 
-        return listTrade.map(data=>data.orderId)
+        return listTrade.map(data=>data.order_id)
 
     } catch (error) {
         bot.sendMessage(-4545085133,error)

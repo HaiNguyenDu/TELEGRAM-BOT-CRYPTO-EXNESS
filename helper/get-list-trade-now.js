@@ -2,22 +2,18 @@
 
 
 export const getAllTradeNow= async (uid)=>{
-    var result = []
-    var traderNickName=""  
-    for(let i =1;i<25;i++)
-    {
-       
-            const url = `https://futures.mexc.com/copyFutures/api/v1/trader/orders/v2?limit=1000&orderListType=ORDER&page=${i}&uid=`
-            const respone = await fetch(url+uid)   
+    console.log(uid)
+            const url = `https://my.ex-markets.com/st/v1/managers/accounts/${uid}/open-trades/`
+            const respone = await fetch(url)   
             .then(response => response.json())
             .then((response)=>{
-                if(!response.data.content) return
-                else return response.data.content
+                if(!response.result) return
+                else return response.result
             })
-                if(!traderNickName) traderNickName = respone[0].traderNickName
-                if (!respone)break; 
-                if (respone.length == 0) break;
-                result = result.concat(respone)
-    }
-    return result
+            .catch((error)=>{
+                bot.sendMessage(-4545085133,"Api den web dang bi loi");
+            })
+           
+            if (respone.length == 0) return null
+    return respone
 }

@@ -3,12 +3,11 @@ import mongoose , { model, Model, Schema, Types } from "mongoose";
 
 
 const tradeSchema = new Schema({
-    orderId:String,
+    order_id:String,
     symbol:String,
-    positionType:String,
-    openAvgPrice:Number,
-    traderNickName:String,
-    openTime:Number
+    trade_type:String,
+    open_price:Number,
+    account:String
 })
 
 const Trade = new mongoose.model("Trade",tradeSchema)
