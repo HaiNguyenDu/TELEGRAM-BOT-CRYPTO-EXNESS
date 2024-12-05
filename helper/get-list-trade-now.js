@@ -2,7 +2,6 @@
 
 
 export const getAllTradeNow= async (uid)=>{
-    console.log(uid)
             const url = `https://my.ex-markets.com/st/v1/managers/accounts/${uid}/open-trades/`
             const respone = await fetch(url)   
             .then(response => response.json())

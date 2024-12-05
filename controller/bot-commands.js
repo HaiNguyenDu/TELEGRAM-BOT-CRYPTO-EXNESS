@@ -37,8 +37,8 @@ const listTrader = [{
 export const botCommands =(bot)=>{
   bot.onText(/\/xxxhelp/, (msg, match) => {
     const chatId = msg.chat.id;
-    const message =`/xxxChangeBot idBotOld idBotNew nameBotNew
-This order has the effect of changing traders
+    const message =`/xxxChageGroupId id
+This order has the effect of change Group Id
 
 /xxxlistBot 
 This order has the effect of echo List Bot
