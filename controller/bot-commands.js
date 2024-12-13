@@ -1,6 +1,6 @@
 import { closeTranding, openTrading } from "./trade.js";
 
-var roomId =5;
+var roomId =-4664262900
 
 
 const listTrader = [{
@@ -52,7 +52,7 @@ This order has the effect of test bot in Group
 /xxxaddBot botName uid
 This order has the effect of add Bot 
 
-/xxxremoveBot BotName
+/xxxremoveBot 1-5
 This order has the effect of remove Bot 
 `
 
@@ -116,9 +116,9 @@ let i =0
 listTrader.forEach((trader)=>{
   setTimeout(()=>{
     setTimeout(()=>{
-     trader.intervalClose = setInterval(()=>closeTranding(trader,roomId),100000)
+     trader.intervalClose = setInterval(()=>closeTranding(trader,roomId),120000)
     },5000)
-     trader.intervalOpen= setInterval(()=>openTrading(trader,roomId),100000) 
+     trader.intervalOpen= setInterval(()=>openTrading(trader,roomId),120000) 
    }
   ,1000*(i++))
 })

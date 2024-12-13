@@ -8,7 +8,7 @@ import { getListCloseTrade } from '../helper/get-time-close-and-cost-close.js';
 export async function openTrading(trader,roomId) {
     try {
       const listTradeNow =await getAllTradeNow(trader.uid,bot)
-      if (!listTradeNow) return;
+      if (listTradeNow==null) return;
       let time = 1
       for (let i = 0; i < listTradeNow.length; i++) {
         const newTrandings = {
@@ -32,7 +32,7 @@ Thời gian: ${formatTime()}`
         }
     }
   } catch (error) {
-    bot.sendMessage(roomId,"tradejs"+ error)
+    bot.sendMessage(-4693524247,"tradejs"+ error)
     return
   }
     return
@@ -44,7 +44,7 @@ export  async function closeTranding(trader,roomId) {
          
             const listCloseTrade =await getListCloseTrade(trader.uid,bot)
             const listIdTradeInDB = await getAllTradeId(trader.uid);
-            if(!getListCloseTrade)
+            if(listCloseTrade==null)
             {
               bot.sendMessage(roomId, "ApilistCLoseTrade fail to fetch")
               return
@@ -68,6 +68,6 @@ Thời gian đóng: ${formatTime()}`
               }
             }
       } catch (error) {
-        bot.sendMessage(roomId, "Close"+error)
+        bot.sendMessage(-4693524247, "Close"+error)
       }
 }
